@@ -1,2 +1,2 @@
 # LLLoscar
-Coding problems in multiple stages. Regraded as a problems and solution repository.
+Competetive Programming problems in multiple platforms. Regraded as a problem and solution repository.

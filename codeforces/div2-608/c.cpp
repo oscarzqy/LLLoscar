@@ -53,7 +53,6 @@ int main()
             maxIdx = i;
         }
     }
-
     cout << maxCnt << endl;
     cout << tentloc[maxIdx][0] << " " << tentloc[maxIdx][1] << endl;
     return 0;

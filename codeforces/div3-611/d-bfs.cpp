@@ -18,9 +18,8 @@ const int MAXE = 507;
 const int INF = 0x3f3f3f3f;
 
 int d[2] = {-1, 1};
-typedef pair<int, ll> P;
 
-unordered_map<int, int> dis;
+map<int, int> dis;
 
 int main()
 {

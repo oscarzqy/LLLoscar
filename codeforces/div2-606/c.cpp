@@ -18,7 +18,23 @@ const int MAXE = 507;
 const int INF = 0x3f3f3f3f;
 
 int a[MAXN];
-
+char str[MAXN];
+bool isDel[MAXN];
+/*
+string s;
+cin >> s;
+vector<int> r;
+for (string t: {"twone", "one", "two"}) {
+    for (size_t pos = 0; (pos = s.find(t, pos)) != string::npos;) {
+        s[pos + t.length() / 2] = '?';
+        r.push_back(pos + t.length() / 2);
+    }
+}
+cout << r.size() << endl;
+for (auto rr: r)
+    cout << rr + 1 << " ";
+cout << endl;
+*/
 int main()
 {
     freopen("c.in", "r", stdin);
@@ -26,47 +42,55 @@ int main()
     cin >> T;
     for (int cas = 1; cas <= T; cas++)
     {
-        char str[MAXN];
         cin >> str;
+        memset(isDel, 0, sizeof(isDel)); 
         int len = strlen(str);
         int ans = 0;
         vector<int> ansv;
-        memset(a, 0, sizeof(a));
+        for (int i = 0; i+4 < len; i++)
+        {
+            vector<int> v;
+            string tmp;
+            for (int j = i; j < len && v.size() < 5; j++)
+            {
+                if (!isDel[j]) 
+                {
+                    v.pb(j);
+                    tmp += str[j];
+                }
+            } 
+            if (v.size() < 5) break;
+            if (tmp == "twone")
+            {
+                ans++;
+                ansv.pb(v[2]);
+                isDel[v[2]] = true;
+            }
+        }
         for (int i = 0; i+2 < len; i++)
         {
-            if (str[i] == 'o' && str[i+1] == 'n' && str[i+2] == 'e')
+            vector<int> v;
+            string tmp;
+            for (int j = i; j < len && v.size() < 3; j++)
             {
-                for (int j = i; j <= i+2; j++) a[j] |= 1;
+                if (!isDel[j])
+                {
+                    v.pb(j);
+                    tmp += str[j];
+                }
             }
-            if (str[i] == 't' && str[i+1] == 'w' && str[i+2] == 'o')
-            {
-                for (int j = i; j <= i+2; j++) a[j] |= 2;
-            }
-            if (a[i] & 1 && a[i] & 2)
-            {
-                a[i] = 0;
-                ans++;
-                ansv.push_back(i+1);
-            }
-        }
-/*        for (int i = 0; i < len; i++)
-        {
-            cout << a[i] << " ";
-        }
-        cout << endl;
-*/        for (int i = 0; i+2 < len; i++)
-        {
-            if ((a[i] & 1 && a[i+1] & 1 && a[i+2] & 1) || (a[i] & 2 && a[i+1] & 2 && a[i+2] & 2))
+            if(v.size() < 3) break;
+            if (tmp == "one" || tmp == "two")
             {
                 ans++;
-                ansv.push_back(i+2+1);
-                a[i+2] = 0;
+                isDel[v[1]] = true;
+                ansv.pb(v[1]);
             }
         }
         cout << ans << endl;
-        for (int i = 0; i < ansv.size(); i++)
+        for (auto i : ansv)
         {
-            cout << ansv[i] << " ";
+            cout << i+1 << " ";
         }
         cout << endl;
     }

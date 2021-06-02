@@ -1,4 +1,5 @@
-autocmd filetype cpp nnoremap <F5> :w <bar> !g++ -ulimit -Wall -Wno-unused-result -std=c++17   -O2   % -o %:r && ./%:r <CR>
+autocmd filetype cpp nnoremap <F5> :w <bar> !g++ -Wall -Wno-unused-result -std=c++17   -O2   % -o %:r && ./%:r <CR>
+autocmd filetype cpp nnoremap <F4> :w <bar> !g++ -Wall -Wno-unused-result -std=c++17   -O2   % -o %:r <CR>
 syntax on
 set nu
 set clipboard=unnamedplus
@@ -18,3 +19,4 @@ autocmd filetype java nnoremap <F5> :w <bar> !javac % && java -enableassertions 
 autocmd filetype python nnoremap <F5> :w <bar> !python % <CR>
 autocmd filetype perl nnoremap <F5> :w <bar> !perl % <CR>
 autocmd filetype go nnoremap <F5> :w <bar> !go build % && ./%:r <CR>
+

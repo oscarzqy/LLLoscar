@@ -11,9 +11,13 @@ set softtabstop=2
 set smarttab
 set expandtab
 set smartcase
+set cursorline
+set hlsearch
 
 set t_Co=256
 set background=dark
+
+highlight CursorLine   cterm=NONE ctermbg=52 ctermfg=NONE guibg=NONE guifg=NONE
 
 autocmd filetype java nnoremap <F5> :w <bar> !javac % && java -enableassertions %:r <CR>
 autocmd filetype python nnoremap <F5> :w <bar> !python % <CR>
